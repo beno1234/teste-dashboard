@@ -21,7 +21,7 @@ apiRoute.get(async (req, res) => {
     res.statusCode = 200
     res.write("Hello World")
     res.end()
-  }, 10000); // espera 5 segundos antes de enviar a resposta
+  }, 5000); // espera 5 segundos antes de enviar a resposta
 });
 
 export default apiRoute;
