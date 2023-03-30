@@ -37,10 +37,12 @@ export type userType = {
 }
 
 
+
+
 const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }: navbarprops) => {
   const dispatch = useDispatch();
-    /* const theme = useSelector((state: RootState) => {state.theme.mode}); */
-    const theme: any = useTheme()
+    
+    const theme = useTheme()
 
   const [anchorEl, setAnchorEl] = useState(null);
   const isOpen = Boolean(anchorEl);
@@ -63,9 +65,9 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }: navbarprops) => {
             <MenuIcon />
           </IconButton>
           <FlexBetween
-            backgroundColor={theme.palette.background.alt}
+            backgroundColor={theme.palette.background.paper}
             borderRadius="9px"
-            gap="3rem"
+            gap="1rem"
             p="0.1rem 1.5rem"
           >
             <InputBase placeholder="Search..." />
@@ -100,19 +102,19 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }: navbarprops) => {
                 <Typography
                   fontWeight="bold"
                   fontSize="0.85rem"
-                  sx={{ color: theme.palette.secondary[100] }}
+                  sx={{ color: theme.palette.secondary.light }}
                 >
                   {user.name}
                 </Typography>
                 <Typography
                   fontSize="0.75rem"
-                  sx={{ color: theme.palette.secondary[200] }}
+                  sx={{ color: theme.palette.secondary.light }}
                 >
                   {user.occupation}
                 </Typography>
               </Box>
               <ArrowDropDownOutlined
-                sx={{ color: theme.palette.secondary[300], fontSize: "25px" }}
+                sx={{ color: theme.palette.secondary.dark, fontSize: "25px" }}
               />
             </Button>
             <Menu

@@ -1,13 +1,25 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from 'next'
+import nextConnect from "next-connect";
 
-type Data = {
-  name: string
-}
+const apiRoute = nextConnect({
+  // Handle any other HTTP method
+  onNoMatch(req, res) {
+    const resObj = { error: `Method ${req.method} Not Allowed` }
+    res.statusCode = 405;
+    res.write(JSON.stringify(resObj));
+    res.end();
+  },
+  onError(error, _, res) {
+    const resObj = { error: `Sorry something Happened! ${error.message}` }
+    res.statusCode = 501;
+    res.write(JSON.stringify(resObj));
+    res.end();
+  }
+});
 
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>
-) {
-  res.status(200).json({ name: 'John Doe' })
-}
+apiRoute.get(async (req, res) => {
+  res.statusCode = 200
+  res.write("Hello World")
+  res.end()
+});
+
+export default apiRoute;

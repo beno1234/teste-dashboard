@@ -72,7 +72,7 @@ const Sidebar = ({
   isNonMobile,
 }: sidebarprops) => {
   const [active, setActive] = useState("");
-  const theme: any = useTheme();
+  const theme = useTheme();
   const router = useRouter()
   const pathname = router.basePath
   useEffect(() => {
@@ -91,8 +91,8 @@ const Sidebar = ({
           sx={{
             width: drawerWidth,
             "& .MuiDrawer-paper": {
-              color: theme.palette.secondary[200],
-              backgroundColor: theme.palette.background.alt,
+              color: theme.palette.secondary.light,
+              backgroundColor: theme.palette.background.paper,
               boxSixing: "border-box",
               borderWidth: isNonMobile ? 0 : "2px",
               width: drawerWidth,
@@ -135,12 +135,12 @@ const Sidebar = ({
                       sx={{
                         backgroundColor:
                           active === lcText
-                            ? theme.palette.secondary[300]
+                            ? theme.palette.secondary.light
                             : "transparent",
                         color:
                           active === lcText
-                            ? theme.palette.primary[600]
-                            : theme.palette.secondary[100],
+                            ? theme.palette.primary.dark
+                            : theme.palette.secondary.light,
                       }}
                     >
                       <ListItemIcon
@@ -148,8 +148,8 @@ const Sidebar = ({
                           ml: "2rem",
                           color:
                             active === lcText
-                              ? theme.palette.primary[600] 
-                              : theme.palette.secondary[200],
+                              ? theme.palette.primary.dark 
+                              : theme.palette.secondary.light,
                         }}
                       >
                         {icon}

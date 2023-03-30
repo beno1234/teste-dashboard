@@ -1,5 +1,14 @@
+import { createMuiTheme, createTheme } from "@mui/material";
+
 // color design tokens export
-export const tokensDark = {
+type tokensType = {
+  grey: { [key: number]: string }
+  primary: { [key: number]: string }
+  secondary: { [key: number]: string }
+}
+
+export const tokensDark: tokensType
+  = {
   grey: {
     0: "#ffffff", // manually adjusted
     10: "#f6f6f6", // manually adjusted
@@ -42,70 +51,80 @@ export const tokensDark = {
   },
 };
 
+
 // function that reverses the color palette
-function reverseTokens(tokensDark) {
-  const reversedTokens = {};
+
+
+function reverseTokens(tokensDark: tokensType): tokensType {
+  const reversedTokens: tokensType = {} as tokensType;
   Object.entries(tokensDark).forEach(([key, val]) => {
     const keys = Object.keys(val);
     const values = Object.values(val);
     const length = keys.length;
-    const reversedObj = {};
+    const reversedObj: { [key: string]: string } = {};
     for (let i = 0; i < length; i++) {
       reversedObj[keys[i]] = values[length - i - 1];
     }
-    reversedTokens[key] = reversedObj;
+    reversedTokens[key as "grey" | "primary" | "secondary"] = reversedObj;
   });
   return reversedTokens;
 }
-export const tokensLight = reverseTokens(tokensDark);
+
+export const tokensLight: tokensType = reverseTokens(tokensDark);
 
 // mui theme settings
-export const themeSettings = (mode) => {
-  return {
+export const themeSettings = (mode: "dark" | "light") => {
+
+
+
+  return createTheme({
+
+
+
     palette: {
       mode: mode,
       ...(mode === "dark"
         ? {
-            // palette values for dark mode
-            primary: {
-              ...tokensDark.primary,
-              main: tokensDark.primary[400],
-              light: tokensDark.primary[400],
-            },
-            secondary: {
-              ...tokensDark.secondary,
-              main: tokensDark.secondary[300],
-            },
-            neutral: {
-              ...tokensDark.grey,
-              main: tokensDark.grey[500],
-            },
-            background: {
-              default: tokensDark.primary[600],
-              alt: tokensDark.primary[500],
-            },
-          }
+          // palette values for dark mode
+          primary: {
+            ...tokensDark.primary,
+            main: tokensDark.primary[400],
+            dark: tokensDark.primary[400],
+          },
+          secondary: {
+            ...tokensDark.secondary,
+            main: tokensDark.secondary[300],
+          },
+          neutral: {
+            ...tokensDark.grey,
+            main: tokensDark.grey[500],
+          },
+          background: {
+            default: tokensDark.primary[600],
+            paper: tokensDark.primary[500],
+          },
+        }
         : {
-            // palette values for light mode
-            primary: {
-              ...tokensLight.primary,
-              main: tokensDark.grey[50],
-              light: tokensDark.grey[100],
-            },
-            secondary: {
-              ...tokensLight.secondary,
-              main: tokensDark.secondary[600],
-              light: tokensDark.secondary[700],
-            },
-            neutral: {
-              ...tokensLight.grey,
-              main: tokensDark.grey[500],
-            },
-            background: {
-              default: tokensDark.grey[0],
-              alt: tokensDark.grey[50],
-            },
-          }),
+          // palette values for light mode
+          primary: {
+            ...tokensLight.primary,
+            main: tokensDark.grey[50],
+            light: tokensDark.grey[100],
+          },
+          secondary: {
+            ...tokensLight.secondary,
+            main: tokensDark.secondary[600],
+            light: tokensDark.secondary[700],
+          },
+          neutral: {
+            ...tokensLight.grey,
+            main: tokensDark.grey[500],
+          },
+          background: {
+            default: tokensDark.grey[0],
+            paper: tokensDark.grey[50],
+          },
+        }),
     },
     typography: {
       fontFamily: ["Inter", "sans-serif"].join(","),
@@ -135,5 +154,5 @@ export const themeSettings = (mode) => {
         fontSize: 14,
       },
     },
-  };
+  });
 };
