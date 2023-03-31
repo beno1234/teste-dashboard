@@ -28,10 +28,10 @@ apiRoute.get(async (req, res) => {
   });
 
   try {
-    const friendly_url = (req as any).query.friendly_url;
+    const friendlyurl = (req as any).query.friendlyurl;
     db.query(
       "SELECT * FROM blog WHERE friendly_url=?",
-      [friendly_url],
+      [friendlyurl],
       (err, results) => {
         if (err) {
           console.error(err);
