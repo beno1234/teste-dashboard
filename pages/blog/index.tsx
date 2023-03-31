@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState, useRef, ChangeEvent } from "react";
-import { Box, TextField, Button, Input } from "@mui/material";
+import { Box, TextField, Button, Input, CssBaseline } from "@mui/material";
 import { Formik, Form, ErrorMessage } from "formik";
 import { mixed, object, string } from "yup";
 import { Alert, Snackbar } from "@mui/material";
@@ -47,6 +47,7 @@ const AddNews = () => {
 
   return (
     <Layout>
+      <CssBaseline />
 
     <Box m="1.5rem 2.5rem">
       <h1>Adicionar notícia</h1>

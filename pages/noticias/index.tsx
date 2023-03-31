@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Box, Button, useTheme } from "@mui/material";
+import { Box, Button, CssBaseline, useTheme } from "@mui/material";
 import Header from "../../components/layout/Header";
 import { DataGrid } from "@mui/x-data-grid";
 import EditIcon from "@mui/icons-material/Edit";
@@ -76,6 +76,7 @@ const Customers = () => {
 
   return (
     <Layout>
+      <CssBaseline />
 
     <Box m="1.5rem 2.5rem">
       <Header title="Todas as noticias" subtitle="Deseja editar ou excluir ?" />
