@@ -5,6 +5,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import {Blog} from "../../data/mockData"
+import Layout from "../../components/layout";
 
 /* import { ListBlog } from "api/apiJs"; */
 
@@ -74,6 +75,8 @@ const Customers = () => {
   }, []); */
 
   return (
+    <Layout>
+
     <Box m="1.5rem 2.5rem">
       <Header title="Todas as noticias" subtitle="Deseja editar ou excluir ?" />
       <Box
@@ -107,6 +110,7 @@ const Customers = () => {
         <DataGrid rows={Blog} columns={columns} />
       </Box>
     </Box>
+    </Layout>
   );
 };
 

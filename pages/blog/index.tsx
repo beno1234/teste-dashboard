@@ -7,6 +7,7 @@ import { Alert, Snackbar } from "@mui/material";
 
 import { Editor } from "@tinymce/tinymce-react";
 import Image from "next/image";
+import Layout from "../../components/layout";
 /* import { CreateBlog } from "api/api"; */
 
 const AddNews = () => {
@@ -45,6 +46,8 @@ const AddNews = () => {
   };
 
   return (
+    <Layout>
+
     <Box m="1.5rem 2.5rem">
       <h1>Adicionar notícia</h1>
 
@@ -175,6 +178,7 @@ const AddNews = () => {
         </Alert>
       </Snackbar>
     </Box>
+    </Layout>
   );
 };
 
