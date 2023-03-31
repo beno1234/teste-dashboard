@@ -26,7 +26,8 @@ apiRoute.get(async (
 
 
     res.statusCode = 200;
-    res.write("hello batatou ", friendlyurl, batata)
+    res.setHeader("Content-Type", "text/plain")
+    res.write(friendlyurl)
     res.end();
 });
 
