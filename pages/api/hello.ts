@@ -1,5 +1,27 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+import nextConnect from "next-connect";
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  res.status(200).json({ message: 'Hello World' });
-}
+const apiRoute = nextConnect({
+  // Handle any other HTTP method
+  onNoMatch(req, res) {
+    const resObj = { error: `Method ${req.method} Not Allowed` }
+    res.statusCode = 405;
+    res.write(JSON.stringify(resObj));
+    res.end();
+  },
+  onError(error, _, res) {
+    const resObj = { error: `Sorry something Happened! ${error.message}` }
+    res.statusCode = 501;
+    res.write(JSON.stringify(resObj));
+    res.end();
+  }
+});
+
+apiRoute.get(async (req, res) => {
+  setTimeout(() => {
+    res.statusCode = 200
+    res.write("Hello World")
+    res.end()
+  },);
+});
+
+export default apiRoute;
