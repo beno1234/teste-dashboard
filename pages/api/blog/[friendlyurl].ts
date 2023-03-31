@@ -23,11 +23,15 @@ apiRoute.get(async (
     res) => {
     const { friendlyurl } = req.query;
     const { batata } = req.query
+    const pegar = await fetch("http://localhost:3002/blog")
+    const response = await pegar.json()
+
+
 
 
     res.statusCode = 200;
     res.setHeader("Content-Type", "text/plain")
-    res.write(friendlyurl)
+    res.write(JSON.stringify(response))
     res.end();
 });
 
