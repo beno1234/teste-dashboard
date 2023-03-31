@@ -77,7 +77,6 @@ const Customers = () => {
   return (
     <Layout>
       <CssBaseline />
-
     <Box m="1.5rem 2.5rem">
       <Header title="Todas as noticias" subtitle="Deseja editar ou excluir ?" />
       <Box

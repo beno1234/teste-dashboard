@@ -18,7 +18,7 @@ const apiRoute = nextConnect({
 
 apiRoute.get(async (req, res) => {
   res.statusCode = 200
-  res.write("Hello batata")
+  res.write("Hello beno")
   res.end()
 });
 
