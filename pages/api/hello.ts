@@ -17,11 +17,9 @@ const apiRoute = nextConnect({
 });
 
 apiRoute.get(async (req, res) => {
-  setTimeout(() => {
-    res.statusCode = 200
-    res.write("Hello World")
-    res.end()
-  },);
+  res.statusCode = 200
+  res.write("Hello World")
+  res.end()
 });
 
 export default apiRoute;
