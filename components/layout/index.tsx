@@ -22,10 +22,9 @@ const Layout = ({ children }: {children: React.ReactNode} ) => {
     <>
       <ThemeProvider theme={themeSettings(themeMode)}>
     
-    <Box display={isNonMobile ? "flex" : "block"} width="100%" height="100%">
+    <Box width="100%" height="100%">
       <Sidebar
         user={data || {}}
-        isNonMobile={isNonMobile}
         drawerWidth="250px"
         isSidebarOpen={isSidebarOpen}
         setIsSidebarOpen={setIsSidebarOpen}
