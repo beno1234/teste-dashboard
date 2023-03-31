@@ -49,7 +49,7 @@ apiRoute.get(async (req, res) => {
 
     res.statusCode = 200;
     res.setHeader("Content-Type", "text/plain");
-    res.end(`${blogPosts}`);
+    res.end(JSON.stringify(blogPosts));
   });
 
 });
