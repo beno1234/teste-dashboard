@@ -61,6 +61,7 @@ type sidebarprops = {
   drawerWidth: string,
   isSidebarOpen: boolean,
   setIsSidebarOpen: (params: boolean) => (void),
+  isNonMobile: boolean
 }
 
 const Sidebar = ({
@@ -68,6 +69,7 @@ const Sidebar = ({
   drawerWidth,
   isSidebarOpen,
   setIsSidebarOpen,
+  isNonMobile,
 }: sidebarprops) => {
   const [active, setActive] = useState("");
   const theme = useTheme();
@@ -92,6 +94,7 @@ const Sidebar = ({
               color: theme.palette.secondary.light,
               backgroundColor: theme.palette.background.paper,
               boxSixing: "border-box",
+              borderWidth: isNonMobile ? 0 : "2px",
               width: drawerWidth,
             },
           }}
@@ -104,6 +107,11 @@ const Sidebar = ({
                     BMOUSE Productions
                   </Typography>
                 </Box>
+                {!isNonMobile && (
+                  <IconButton onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
+                    <ChevronLeft />
+                  </IconButton>
+                )}
               </FlexBetween>
             </Box>
             <List>
