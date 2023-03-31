@@ -10,7 +10,6 @@ export default function App({ Component, pageProps }: AppProps) {
     
     <Provider store={store}>
       <Layout>
-        <CssBaseline />
       <Component {...pageProps} />
       </Layout>
     </Provider>
